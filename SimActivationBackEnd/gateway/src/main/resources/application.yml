@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: 'http://localhost:4200'
+            allowedMethods: '*'
+            allowedHeaders: '*'
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: UserMS
+          uri: lb://UserMS
+          predicates:
+            - Path=/user/**
+        - id: SimActivationMS
+          uri: lb://SimActivationMS
+          predicates:
+            - Path=/sim/**

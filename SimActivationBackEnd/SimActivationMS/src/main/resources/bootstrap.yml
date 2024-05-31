@@ -1,0 +1,18 @@
+server:
+  port: 9080
+
+spring:
+  application:
+    name: SimActivationMS
+
+  cloud:
+    #consul config
+    consul:
+      discovery:
+        hostname: localhost
+      config:
+        enabled: true
+        prefix: config
+        defaultContext: application
+        profileSeparator: '::'
+        format: YAML
