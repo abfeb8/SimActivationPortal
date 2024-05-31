@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>ID Proof Validation</h2>
+    <form [formGroup]="idForm" (ngSubmit)="validateUserId()">
+
+        <div class="mb-3">
+            <label class="form-label">ID Type</label>
+            <input type="text" class="form-control" placeholder="Aadhaar Card" value="Aadhaar" disabled>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">State</label>
+            <select class="form-select" formControlName="state">
+                <option *ngFor="let state of states" [value]="state">{{state}}</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">ID Number</label>
+            <input type="text" class="form-control" placeholder="ID" formControlName="id">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" placeholder="Abhishek" formControlName="firstName">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" placeholder="Malviya" formControlName="lastName">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" formControlName="dateOfBirth">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!idForm.valid">Next</button>
+
+        <div style="color: red;" *ngIf="showMsg">
+            {{ message }}
+        </div>
+    </form>
+</div>

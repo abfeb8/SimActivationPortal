@@ -1,0 +1,34 @@
+<div class="container">
+    <h2>Success</h2>
+    <h4>Confirmation</h4>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>First Name</td>
+                <td>{{user.firstName}}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{user.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td>{{user.dateOfBirth}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form [formGroup]="declarationForm" (ngSubmit)="submitForm()">
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" formControlName="declaration">
+            <label class="form-check-label">I agree to the terms and conditions.</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!declarationForm.value.declaration">Next</button>
+    </form>
+
+</div>

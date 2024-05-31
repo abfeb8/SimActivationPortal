@@ -1,0 +1,39 @@
+<div class="container">
+    <h2>Customer Address Details</h2>
+    <form [formGroup]="addressForm" (ngSubmit)="submitAddress()">
+
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" placeholder="Address" formControlName="address">
+            <div style="color: red;"
+                *ngIf="addressForm.controls['address'].invalid && addressForm.controls['address'].dirty">
+                Address is required with max size of 25.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">State</label>
+            <select class="form-select" formControlName="state">
+                <option *ngFor="let state of states" [value]="state">{{state}}</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Pin code</label>
+            <input type="text" class="form-control" placeholder="Pin Code" formControlName="pin">
+            <div style="color: red;" *ngIf="addressForm.controls['pin'].invalid && addressForm.controls['pin'].dirty">
+                Pincode is required with max size of 6.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control" placeholder="City" formControlName="city">
+            <div style="color: red;" *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].dirty">
+                Reuired with no special characters are allowed.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="addressForm.invalid">Next</button>
+    </form>
+</div>

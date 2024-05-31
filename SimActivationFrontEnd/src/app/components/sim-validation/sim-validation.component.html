@@ -1,0 +1,28 @@
+<h2>Your service details.</h2>
+<form [formGroup]="simVerificationForm" (ngSubmit)="verifySim()">
+
+    <div class="mb-3">
+        <label class="form-label">SIM Number</label>
+        <input type="text" class="form-control" placeholder="SIM Number" formControlName="simNumber">
+        <div style="color: red;"
+            *ngIf="simVerificationForm.controls['simNumber'].invalid && simVerificationForm.controls['simNumber'].dirty">
+            SIM number should be 13 chracter long.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Service Number</label>
+        <input type="text" class="form-control" placeholder="Service Number" formControlName="serviceNumber">
+        <div style="color: red;"
+            *ngIf="simVerificationForm.controls['serviceNumber'].invalid && simVerificationForm.controls['serviceNumber'].dirty">
+            Service number should be 10 chracter long.
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="simVerificationForm.invalid">Next</button>
+
+    <div style="color: red;" *ngIf="showMsg">
+        {{ message }}
+    </div>
+
+</form>

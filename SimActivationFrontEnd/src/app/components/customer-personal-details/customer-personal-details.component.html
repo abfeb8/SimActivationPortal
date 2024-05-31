@@ -1,0 +1,56 @@
+<div class="container">
+    <h2>Customer Personal Details</h2>
+    <form [formGroup]="personalDetailsForm" (ngSubmit)="verifyPersonalDetails()">
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <select class="form-select" formControlName="title">
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Ms.">Ms.</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" placeholder="Abhishek" formControlName="firstName">
+            <div style="color: red;"
+                *ngIf="personalDetailsForm.controls['firstName'].invalid && personalDetailsForm.controls['firstName'].dirty">
+                Only alphabets allowed, with max length 15.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" placeholder="Malviya" formControlName="lastName">
+            <div style="color: red;"
+                *ngIf="personalDetailsForm.controls['lastName'].invalid && personalDetailsForm.controls['lastName'].dirty">
+                Only alphabets allowed, with max length 15.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" [placeholder]="email" disabled>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Date of Birth</label>
+            <input type="text" class="form-control" [placeholder]="dateOfBirth" disabled>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Confirm Email</label>
+            <input type="text" class="form-control" placeholder="Confirm Email ID" formControlName="confirmEmail">
+            <div style="color: red;"
+                *ngIf="personalDetailsForm.controls['confirmEmail'].invalid && personalDetailsForm.controls['confirmEmail'].dirty">
+                Not matching.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="personalDetailsForm.invalid">Next</button>
+
+        <div style="color: red;" *ngIf="showMsg">
+            {{ message }}
+        </div>
+    </form>
+</div>
